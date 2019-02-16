@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body>
+    <div class="warpper">
+        <header>
+            <div><</div>
+            <div>喵掌柜杂货铺</div>
+            <div>···</div>
+        </header>
+        <section>
+            <div>
+                <div>
+                    <div>
+                        <img src="./img/1.jpg" alt="">
+                    </div>
+                    <div>
+                        <h5>秒掌柜杂货店<span>(已打样)</span></h5>
+                        <p><span>包邮</span>满四十包邮</p>
+                    </div>
+                    <div>
+                        取消关注
+                    </div>
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Slide 1</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span>热卖商品</span>
+                    <span>店家推荐</span>
+                    <span>跳楼促销</span>
+                </div>
+                <div id="ids">
+                    <div id="one">
+                        <!-- <dl>
+                        <dt><img src="./img/1.jpg" alt=""></dt>
+                        <dd>
+                            <h5>猫掌柜梅花软糖包邮糖果混合口味</h5>
+                            <span>规格：1000G</span>
+                            <p>
+                                <span>￥40.00</span>
+                                <span>+</span>
+                            </p>
+                        </dd>
+                    </dl> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div>首页</div>
+            <div>购物车</div>
+            <div>我的</div>
+        </footer>
+    </div>
+
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/common/bscroll.min.js"></script>
+    <script src="./js/common/swiper.min.js"></script>
+    <script>
+        new BScroll('#ids')
+        new Swiper('.swiper-container')
+        $.ajax({
+            type:'get',
+            url:'/data/one',
+            success:function(data){
+                var data=JSON.parse(data).data;
+                one.innerHTML=data.map(function(ele){
+                    return `<dl>
+                        <dt><img src="./img/${ele.img}" alt=""></dt>
+                        <dd>
+                            <h5>${ele.title}</h5>
+                            <span>${ele.guige}</span>
+                            <p>
+                                <span>${ele.age}</span>
+                                <span>+</span>
+                            </p>
+                        </dd>
+                    </dl>`
+                }).join('')
+            }
+        })
+    </script>
+</body>
+</html>
